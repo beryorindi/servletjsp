@@ -25,25 +25,9 @@
     	<main class="mdl-layout__content">
     		<div class="mdl-card mdl-shadow--6dp">
     			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-    				<h2 class="mdl-card__title-text">Edit User</h2>
+    				<h2 class="mdl-card__title-text">Delete User</h2>
     			</div>
-    			<form action="edit" method="POST">
-    	  			<div class="mdl-card__supporting-text">
-    	  				<input name="id" value="${user.getId()}" hidden="true"/>
-    					<div class="mdl-textfield mdl-js-textfield">
-    						<input class="mdl-textfield__input" type="text" id="username" name="username" value="${user.getUserName()}"/>
-    						<label class="mdl-textfield__label" for="username">Username</label>
-    					</div>
-    					<div class="mdl-textfield mdl-js-textfield">
-    						<input class="mdl-textfield__input" type="password" id="userpass" name="userpass" value="${user.getPassword()}"/>
-    						<label class="mdl-textfield__label" for="userpass">Password</label>
-    					</div>
-    				
-		    		</div>
-		    		<div class="mdl-card__actions mdl-card--border">
-		    			<button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Save</button>
-		    		</div>
-    			</form>
+    		
     		</div>
     	</main>
     </div>

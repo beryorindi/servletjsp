@@ -14,7 +14,7 @@ public interface Dao<T, ID>
      * @param id id
      * @return record wrapped by {@link Optional}
      */
-    Optional<T> find(ID id);
+    T find(ID id);
 
     /**
      * Find all records

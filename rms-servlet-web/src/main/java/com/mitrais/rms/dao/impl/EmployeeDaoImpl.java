@@ -17,7 +17,7 @@ import com.mitrais.rms.model.Employee;
 public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
-	public Optional<Employee> find(Long id) {
+	public Employee find(Long id) {
 		try (Connection connection = DataSourceFactory.getConnection())
         {
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employee WHERE id=?");
@@ -26,7 +26,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (rs.next())
             {
                 Employee emp = new Employee(rs.getLong("id"), rs.getString("name"), rs.getString("position"), rs.getString("office"));
-                return Optional.of(emp);
+                return emp;
             }
         }
         catch (SQLException ex)
@@ -34,7 +34,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             ex.printStackTrace();
         }
 
-        return Optional.empty();
+        return null;
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet("/users/*")
 public class UserServlet extends AbstractController
@@ -24,12 +25,18 @@ public class UserServlet extends AbstractController
         if ("/list".equalsIgnoreCase(req.getPathInfo())){
             List<User> users = userDao.findAll();
             req.setAttribute("users", users);
-        }else if ("/edit".equalsIgnoreCase(req.getPathInfo())){
-//        	userDao.find(req.getParameter("id"));
-//            User user = new User();
-            
         }
-
+        if ("/edit".equalsIgnoreCase(req.getPathInfo())){
+        	Long id = Long.parseLong(req.getParameter("id"));
+            User user = userDao.find(id);
+            req.setAttribute("user", user);
+        }
+        if("/delete".equalsIgnoreCase(req.getPathInfo())){
+        	Long id = Long.parseLong(req.getParameter("id"));
+        	User user = userDao.find(id);
+            userDao.delete(user);
+            path = null;
+        }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
     }
@@ -42,11 +49,16 @@ public class UserServlet extends AbstractController
         if("/form".equalsIgnoreCase(req.getPathInfo())){
         	User user = new User(req.getParameter("username"), req.getParameter("userpass"));
         	userDao.save(user);
-        	resp.sendRedirect("/list");
+        }
+        if ("/edit".equalsIgnoreCase(req.getPathInfo())){
+            User user = new User(Long.parseLong(req.getParameter("id")), req.getParameter("username"), req.getParameter("userpass"));
+            userDao.update(user);
+            path = "list.jsp";
+            //resp.sendRedirect("list");
         }
         
-
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
+        //resp.sendRedirect("list");
     }
 }
