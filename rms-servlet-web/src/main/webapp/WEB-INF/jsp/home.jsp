@@ -23,7 +23,8 @@
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">RMS</span>
+          <span class="mdl-layout-title">RMS
+          Welcome ${session.getAttribute("username")} </span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
@@ -41,7 +42,7 @@
           <a class="mdl-navigation__link" href="users/list">Users</a>
           <a class="mdl-navigation__link" href="employees/list">Employees</a>
           <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="logout">Logout</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
