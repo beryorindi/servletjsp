@@ -19,6 +19,7 @@
 </head>
 
 <body>
+
     <div class="demo-layout-transparent mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
@@ -31,7 +32,7 @@
             <a class="mdl-navigation__link" href="users/list">Users</a>
             <a class="mdl-navigation__link" href="employees/list">Employees</a>
             <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="logout">Logout</a>
           </nav>
         </div>
       </header>
@@ -41,7 +42,7 @@
           <a class="mdl-navigation__link" href="users/list">Users</a>
           <a class="mdl-navigation__link" href="employees/list">Employees</a>
           <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="logout">Logout</a>
         </nav>
       </div>
       <main class="mdl-layout__content">

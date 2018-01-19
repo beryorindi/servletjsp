@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mitrais.rms.dao.UserDao;
+import com.mitrais.rms.dao.impl.UserDaoImpl;
+import com.mitrais.rms.model.User;
+
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet("/login")
 public class LoginServlet extends AbstractController
@@ -16,10 +21,7 @@ public class LoginServlet extends AbstractController
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-    	String uname = req.getParameter("username");
-    	HttpSession session = req.getSession();
-    	session.setAttribute("username", uname);
-        String path = getTemplatePath(req.getServletPath());
+    	String path = getTemplatePath(req.getServletPath());
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
         requestDispatcher.forward(req, resp);
     }
@@ -27,6 +29,28 @@ public class LoginServlet extends AbstractController
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-        super.doPost(req, resp);
+//    	String path = getTemplatePath(req.getServletPath());
+    	UserDao userDao = UserDaoImpl.getInstance();
+    	String uname = req.getParameter("username");
+    	String upass = req.getParameter("userpass");
+    	
+    	User loginUser = new User(uname,upass);
+    	HttpSession session = req.getSession(true);
+    	Optional<User> dbuser = userDao.findByUserName(uname);
+    	if(dbuser.isPresent()){
+    		if(loginUser.getPassword().equals(dbuser.get().getPassword())){
+        		session.setAttribute("username", uname);
+        		resp.sendRedirect(req.getContextPath()+"/home");
+        	}else{
+        		resp.sendRedirect(req.getContextPath()+"/login");
+        	}
+    	}
+    	else{
+    		resp.sendRedirect(req.getContextPath()+"/login");
+    	}
+    	
+    	
+    	
+        
     }
 }
