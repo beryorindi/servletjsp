@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix = "rms" uri = "/WEB-INF/tags/link.tld"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!doctype html>

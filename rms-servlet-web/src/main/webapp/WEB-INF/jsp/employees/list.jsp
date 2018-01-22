@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix = "rms" uri = "/WEB-INF/tags/link.tld"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!doctype html>
@@ -38,12 +38,12 @@
                     <td><c:out value = "${employee.position}"/></td>
                     <td><c:out value = "${employee.office}"/></td>
                     <td>
-					<a href="edit?id=${id}">
+					<a href="edit?id=${employee.id}">
 						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
 					  		<i class="material-icons">edit</i>
 						</button>
 					</a>
-					<a href="delete?id=${id}">
+					<a href="delete?id=${employee.id}">
 						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
 					  		<i class="material-icons">delete</i>
 						</button>

@@ -29,9 +29,10 @@ public class UserServlet extends AbstractController
     		resp.sendRedirect(req.getContextPath()+"/login");
 		}
 		else {
-			
-
-	        if ("/list".equalsIgnoreCase(req.getPathInfo())){
+			if ("/".equalsIgnoreCase(req.getPathInfo())) {
+				path = req.getServletPath()+"/list";
+	        }
+	        if ("/list".equalsIgnoreCase(req.getPathInfo())) {
 	            List<User> users = userDao.findAll();
 	            req.setAttribute("users", users);
 	        }
@@ -40,16 +41,17 @@ public class UserServlet extends AbstractController
 	            User user = userDao.find(id);
 	            req.setAttribute("user", user);
 	        }
+	        
 	        if("/delete".equalsIgnoreCase(req.getPathInfo())){
 	        	Long id = Long.parseLong(req.getParameter("id"));
 	        	User user = userDao.find(id);
 	            userDao.delete(user);
-	            path = null;
+	            path = req.getServletPath()+"/list";
+	            //resp.sendRedirect(path);
 	        }
 	        RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
 	        requestDispatcher.forward(req, resp);
 		}
-        
     }
     
     @Override
@@ -63,13 +65,15 @@ public class UserServlet extends AbstractController
         }
         if ("/edit".equalsIgnoreCase(req.getPathInfo())){
             User user = new User(Long.parseLong(req.getParameter("id")), req.getParameter("username"), req.getParameter("userpass"));
-            userDao.update(user);
-            path = "list.jsp";
-            //resp.sendRedirect("list");
+            userDao.update(user);            
         }
         
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
-        requestDispatcher.forward(req, resp);
+        path = req.getContextPath()+req.getServletPath()+"/list";
+        resp.sendRedirect(path);
+//        RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
+//        requestDispatcher.forward(req, resp);
         //resp.sendRedirect("list");
     }
+    
+    
 }

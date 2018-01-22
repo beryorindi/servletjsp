@@ -17,6 +17,18 @@ public class Employee {
 		this.position = position;
 		this.office = office;
 	}
+	
+	/**
+	 * @param name
+	 * @param position
+	 * @param office
+	 */
+	public Employee(String name, String position, String office) {
+		this.name = name;
+		this.position = position;
+		this.office = office;
+	}
+
 	/**
 	 * @return the id
 	 */

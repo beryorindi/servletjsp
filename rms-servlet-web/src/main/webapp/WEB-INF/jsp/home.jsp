@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" pageEncoding="UTF-8" session="true"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@
         </nav>
       </div>
       <main class="mdl-layout__content">
-      	
+      	Welcome <c:out value="${session.username }"/>
       </main>
     </div>
   <script src="js/scripts.js"></script>

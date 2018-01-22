@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix = "rms" uri = "/WEB-INF/tags/link.tld"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
@@ -52,9 +52,12 @@
                     </td>
                   </tr>
               </c:forEach>
-				<tr><a href="form"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-				  <i class="material-icons">add</i></a>
-				</button></tr>
+				<tr><a href="form">
+						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+					  		<i class="material-icons">add</i>
+						</button>
+					</a>
+				</tr>
               </tbody>              
             </table>
     	</main>

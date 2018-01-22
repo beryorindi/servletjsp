@@ -19,14 +19,16 @@ public class HomePageServlet extends AbstractController
     {
     	String path = getTemplatePath(req.getServletPath());
         
-        
-//    	HttpSession session = req.getSession(true);
-//    	String uname = req.getParameter("username");
-//    	session.setAttribute("username", uname);
+    	HttpSession session = req.getSession(true);
+    	if(session.getAttribute("username") == null)
+		{
+    		resp.sendRedirect(req.getContextPath()+"/login");
+		}else{
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
+	        requestDispatcher.forward(req, resp);
+		}
     	
-    	RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
-        requestDispatcher.forward(req, resp);
-        //req.getRequestDispatcher(req.getServletPath()+"/home.jsp").forward(req, resp);
+    	
     }
 
 }

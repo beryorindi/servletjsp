@@ -21,15 +21,23 @@ public class LoginServlet extends AbstractController
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
+    	
     	String path = getTemplatePath(req.getServletPath());
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
-        requestDispatcher.forward(req, resp);
+    	
+    	HttpSession session = req.getSession(true);
+    	if(session.getAttribute("username") == null)
+		{
+    		RequestDispatcher requestDispatcher = req.getRequestDispatcher(path);
+	        requestDispatcher.forward(req, resp);
+		}else{
+	        resp.sendRedirect(req.getContextPath()+"/home");
+		}
+ 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-//    	String path = getTemplatePath(req.getServletPath());
     	UserDao userDao = UserDaoImpl.getInstance();
     	String uname = req.getParameter("username");
     	String upass = req.getParameter("userpass");
