@@ -24,44 +24,78 @@
 
 <body>
 
-    <div class="mdl-layout mdl-js-layout mdl-color--grey-100 box-center">
-    	<main class="mdl-layout__content">
-    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric">User Name</th>
-                  <th>Password</th>
-                </tr>
-              </thead>
-              <tbody>
-              <c:forEach items = "${users}" var="user">
-                  <tr>
-                    <td class="mdl-data-table__cell--non-numeric"><c:out value = "${user.userName}"/></td>
-                    <td><c:out value = "${user.password}"/></td>
-                    <td>
-					<a href="edit?id=${user.id}">
-						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-					  		<i class="material-icons">edit</i>
-						</button>
-					</a>
-					<a href="delete?id=${user.id}">
-						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-					  		<i class="material-icons">delete</i>
-						</button>
-					</a>
-                    </td>
-                  </tr>
-              </c:forEach>
-				<tr><a href="form">
-						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-					  		<i class="material-icons">add</i>
-						</button>
-					</a>
-				</tr>
-              </tbody>              
-            </table>
-    	</main>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <a href="/rms-servlet-web/home" class="mdl-layout-title mdl-navigation__link">RMS</a>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/rms-servlet-web/users/list">Users</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/employees/list">Employees</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">RMS</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/rms-servlet-web/users/list">Users</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/employees/list">Employees</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
+        </nav>
+      </div>
+      <div class="box-center">
+      	<main class="mdl-layout__content" >
+      		<div class="main-center">
+	      	<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+	              <thead>
+	                <tr>
+	                  <th class="mdl-data-table__cell--non-numeric">User Name</th>
+	                  <th>Password</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	              <c:forEach items = "${users}" var="user">
+	                  <tr>
+	                    <td class="mdl-data-table__cell--non-numeric"><c:out value = "${user.userName}"/></td>
+	                    <td><c:out value = "${user.password}"/></td>
+	                    <td>
+						<a href="edit?id=${user.id}">
+							<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+						  		<i class="material-icons">edit</i>
+							</button>
+						</a>
+						<a href="delete?id=${user.id}">
+							<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+						  		<i class="material-icons">delete</i>
+							</button>
+						</a>
+	                    </td>
+	                  </tr>
+	              </c:forEach>
+					<tr><a href="form">
+							<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+						  		<i class="material-icons">add</i>
+							</button>
+						</a>
+					</tr>
+	              </tbody>              
+	            </table>
+	            </div>    
+      	</main>
+      </div>
     </div>
+
+
+
+    <!-- <div class="mdl-layout mdl-js-layout mdl-color--grey-100 box-center">
+    	<main class="mdl-layout__content">
+    		
+    	</main>
+    </div> -->
   <script src="js/scripts.js"></script>
 </body>
 </html>

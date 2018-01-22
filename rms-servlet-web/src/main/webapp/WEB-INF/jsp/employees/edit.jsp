@@ -20,11 +20,33 @@
 </head>
 
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-color--grey-100">
-    	<main class="mdl-layout__content">
-    		<div class="mdl-card mdl-shadow--6dp">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <a href="/rms-servlet-web/home" class="mdl-layout-title mdl-navigation__link">RMS</a>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+           <a class="mdl-navigation__link" href="/rms-servlet-web/users/list">Users</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/employees/list">Employees</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">RMS</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/rms-servlet-web/users/list">Users</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/employees/list">Employees</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+      		<div class="mdl-card mdl-shadow--6dp">
     			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-    				<h2 class="mdl-card__title-text">Add Employee</h2>
+    				<h2 class="mdl-card__title-text">Edit Employee</h2>
     			</div>
     			<form action="edit" method="POST">
     	  			<div class="mdl-card__supporting-text">
@@ -52,8 +74,10 @@
 	    			</div>
     			</form>
     		</div>
-    	</main>
+      	
+      </main>
     </div>
+
   <script src="js/scripts.js"></script>
 </body>
 </html>

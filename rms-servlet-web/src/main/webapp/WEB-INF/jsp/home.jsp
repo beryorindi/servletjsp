@@ -1,5 +1,4 @@
 <%@ page language="java" pageEncoding="UTF-8" session="true"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,34 +19,31 @@
 </head>
 
 <body>
-
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">RMS</span>
+          <a href="/rms-servlet-web/home" class="mdl-layout-title mdl-navigation__link">RMS</a>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="users/list">Users</a>
-            <a class="mdl-navigation__link" href="employees/list">Employees</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="logout">Logout</a>
+           <a class="mdl-navigation__link" href="/rms-servlet-web/users/list">Users</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/employees/list">Employees</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">RMS</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="users/list">Users</a>
-          <a class="mdl-navigation__link" href="employees/list">Employees</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="logout">Logout</a>
+          <a class="mdl-navigation__link" href="/rms-servlet-web/users/list">Users</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/employees/list">Employees</a>
+            <a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
-      	Welcome <c:out value="${session.username }"/>
+      	<span class="mdl-layout-title">Welcome <%= session.getAttribute( "username" ) %></span>
       </main>
     </div>
   <script src="js/scripts.js"></script>

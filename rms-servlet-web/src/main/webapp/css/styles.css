@@ -8,6 +8,12 @@
 	flex: none;
 }
 
+.mdl-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .demo-layout-transparent {
   background-color: #006be5;
 }
